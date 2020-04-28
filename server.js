@@ -12,7 +12,8 @@ require('./models/Information');
 mongoose.connect(process.env.MONGO_DATASOURCE, mongoOptions);
 const Information = mongoose.model('Information');
 
-app.use(express.urlencoded({ extended: false }));
+//app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 app.get('/api/informations', async (req, res) => {
     const data = await Information.find().sort({ "timestamp": -1 });
     console.log(data);
